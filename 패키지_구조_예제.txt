@@ -1,0 +1,30 @@
+com.example.project
+├── common/                     # 공통 유틸, 공통 예외, 상수 등
+│
+├── domain/                    # 핵심 도메인 계층
+│   ├── user/                  # 사용자 도메인
+│   │   ├── User.java          # Aggregate Root (Entity)
+│   │   ├── UserRepository.java # Repository 인터페이스
+│   │   ├── UserService.java   # 도메인 서비스 (비즈니스 규칙 담당)
+│   │   └── command/           # 명령형 로직 분리 (선택)
+│   ├── order/
+│   │   ├── Order.java
+│   │   ├── OrderItem.java
+│   │   ├── OrderRepository.java
+│   │   └── OrderService.java
+│
+├── application/               # 유스케이스 계층
+│   ├── user/
+│   │   ├── UserCommandService.java  # 도메인 서비스 호출
+│   │   ├── UserQueryService.java   # 조회 전용 로직
+│
+├── infrastructure/            # 기술 세부 구현 계층 (DB, 외부 API 등)
+│   ├── user/
+│   │   ├── JpaUserRepository.java  # Repository 구현체
+│
+├── interfaces/                # 외부와의 접점 (API, Web, Batch 등)
+│   ├── user/
+│   │   ├── UserController.java
+│   │   └── dto/
+│   │       ├── UserRequest.java
+│   │       └── UserResponse.java

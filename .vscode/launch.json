@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "com.uca.hrm.Test",
+            "projectName": "hrm"
+        },
+        {
+            "type": "java",
+            "name": "EmployeeTest",
+            "request": "launch",
+            "mainClass": "com.uca.hrm.domain.EmployeeTest",
+            "projectName": "hrm"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-HrmApplication<hrm>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.uca.hrm.HrmApplication",
+            "projectName": "hrm",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
