@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Employee",
+            "request": "launch",
+            "mainClass": "com.uca.hrm.domain.Employee",
+            "projectName": "hrm"
+        },
+        {
+            "type": "java",
             "name": "Test",
             "request": "launch",
             "mainClass": "com.uca.hrm.Test",

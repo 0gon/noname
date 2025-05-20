@@ -1,4 +1,8 @@
-package com.uca.hrm.domain;
+package com.uca.hrm.service.port;
+
+import java.util.List;
+
+import com.uca.hrm.domain.Employee;
 
 public interface EmployeeRepository {
     void save(Employee employee);
@@ -8,4 +12,9 @@ public interface EmployeeRepository {
     void update(Employee employee);
 
     void delete(String id);
+
+    List<Employee> findAll();
+
+    List<Employee> findByLeaveRecipient();
 }
+

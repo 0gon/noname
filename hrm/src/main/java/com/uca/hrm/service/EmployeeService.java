@@ -1,17 +1,24 @@
 
-package com.uca.hrm.domain;
+package com.uca.hrm.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import org.springframework.stereotype.Service;
+
+import com.uca.hrm.domain.Employee;
+import com.uca.hrm.service.port.EmployeeRepository;
 
 import lombok.AllArgsConstructor;
 
+@Service
 @AllArgsConstructor
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
     // 사원 추가
-    public void addEmployee(String firstName, String lastName, String email, String phoneNumber, String hireDate, String department, String jobTitle,
+    public void addEmployee(String firstName, String lastName, String email, String phoneNumber, LocalDate hireDate, String department, String jobTitle,
             BigDecimal salary) {
 
         Employee employee = Employee.create(firstName, lastName, email, phoneNumber, hireDate, department, jobTitle, salary);

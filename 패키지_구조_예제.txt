@@ -1,3 +1,5 @@
+Universal Company Architecture
+
 com.example.project
 ├── common/                     # 공통 유틸, 공통 예외, 상수 등
 │
@@ -28,3 +30,14 @@ com.example.project
 │   │   └── dto/
 │   │       ├── UserRequest.java
 │   │       └── UserResponse.java
+
+
+
+
+
+
+
+
+
+
+

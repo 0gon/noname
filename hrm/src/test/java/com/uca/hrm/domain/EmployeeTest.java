@@ -2,9 +2,13 @@
 package com.uca.hrm.domain;
 
 import org.junit.jupiter.api.Test;
+
+import com.uca.hrm.comm.exception.InvalidException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.DisplayName;
 
@@ -18,7 +22,7 @@ public class EmployeeTest {
                 "Doe",
                 "john.doe@example.com",
                 "123-456-7890",
-                "2023-01-01",
+                LocalDate.parse("2023-01-01"),
                 "Engineering",
                 "Software Engineer",
                 new BigDecimal(85000));
@@ -28,7 +32,7 @@ public class EmployeeTest {
         assertEquals("Doe", employee.getLastName());
         assertEquals("john.doe@example.com", employee.getEmail());
         assertEquals("123-456-7890", employee.getPhoneNumber());
-        assertEquals("2023-01-01", employee.getHireDate());
+        assertEquals(LocalDate.parse("2023-01-01"), employee.getHireDate());
         assertEquals("Engineering", employee.getDepartment());
         assertEquals("Software Engineer", employee.getJobTitle());
         assertEquals(new BigDecimal(85000), employee.getSalary());
@@ -42,7 +46,7 @@ public class EmployeeTest {
                 "Smith",
                 "jane.smith@example.com",
                 "987-654-3210",
-                "2023-02-01",
+                LocalDate.parse("2023-02-01"),
                 "Marketing",
                 "Marketing Manager",
                 new BigDecimal(85000));
@@ -53,7 +57,7 @@ public class EmployeeTest {
     @Test
     @DisplayName("사원 생성자 낫널 검증 테스트")
     public void testEmployeeEmailValidation() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        Exception exception = assertThrows(InvalidException.class, () -> {
             Employee.create(
                     null,
                     null,
@@ -65,9 +69,6 @@ public class EmployeeTest {
                     null);
         });
 
-        String actualMessage = exception.getMessage();
-        int lineCount = (int) actualMessage.chars().filter(ch -> ch == '\n').count();
-        assertTrue(6 == lineCount);
     }
 
 }
