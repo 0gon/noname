@@ -1,9 +1,10 @@
+package com.uca.hrm.domain.employee.domain;
 
-package com.uca.hrm.domain;
-
+import com.uca.hrm.domain.employee.Employee;
 import org.junit.jupiter.api.Test;
 
 import com.uca.hrm.comm.exception.InvalidException;
+import com.uca.hrm.comm.util.FakeIdFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,7 @@ public class EmployeeTest {
     @DisplayName("사원 생성 테스트")
     public void testEmployeeCreation() {
         Employee employee = Employee.create(
+                new FakeIdFactory(),
                 "John",
                 "Doe",
                 "john.doe@example.com",
@@ -28,6 +30,7 @@ public class EmployeeTest {
                 new BigDecimal(85000));
 
         assertNotNull(employee);
+        assertNotNull(employee.getId());
         assertEquals("John", employee.getFirstName());
         assertEquals("Doe", employee.getLastName());
         assertEquals("john.doe@example.com", employee.getEmail());
@@ -42,6 +45,7 @@ public class EmployeeTest {
     @DisplayName("사원 ID 생성 테스트")
     public void testEmployeeIdGeneration() {
         Employee employee = Employee.create(
+                new FakeIdFactory(),
                 "Jane",
                 "Smith",
                 "jane.smith@example.com",
@@ -57,8 +61,9 @@ public class EmployeeTest {
     @Test
     @DisplayName("사원 생성자 낫널 검증 테스트")
     public void testEmployeeEmailValidation() {
-        Exception exception = assertThrows(InvalidException.class, () -> {
+        assertThrows(InvalidException.class, () -> {
             Employee.create(
+                    new FakeIdFactory(),
                     null,
                     null,
                     null,

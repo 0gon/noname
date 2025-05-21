@@ -1,11 +1,10 @@
-package com.uca.hrm.infra;
+package com.uca.hrm.domain.employee;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.uca.hrm.domain.Employee;
-import com.uca.hrm.service.port.EmployeeRepository;
+import com.uca.hrm.domain.employee.port.EmployeeRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,18 +15,13 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     private final EmployeeJpaRepository jpaEmployeeRepository;
 
     @Override
-    public void save(Employee employee) {
-        jpaEmployeeRepository.save(employee);
+    public Employee save(Employee employee) {
+        return jpaEmployeeRepository.save(employee);
     }
 
     @Override
     public Employee findById(String id) {
         return jpaEmployeeRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public void update(Employee employee) {
-        jpaEmployeeRepository.save(employee);
     }
 
     @Override

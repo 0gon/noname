@@ -1,10 +1,11 @@
-package com.uca.hrm.domain;
+package com.uca.hrm.domain.util;
 
 import java.time.LocalDateTime;
 
 import lombok.Getter;
+import lombok.AccessLevel;
 
-@Getter
+@Getter(AccessLevel.PUBLIC)
 public class BaseField {
 
     private boolean isActive; // 사용여부

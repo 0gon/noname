@@ -1,4 +1,4 @@
-package com.uca.hrm.controller;
+package com.uca.hrm.domain.employee;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,9 +7,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.uca.hrm.domain.Employee;
-import com.uca.hrm.service.EmployeeService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,8 +33,13 @@ public class EmployeeController {
 
     // 사원 정보 수정
     @PostMapping("/employee/update")
-    public ResponseEntity<Void> updateEmployee(Employee employee) {
-        employeeService.updateEmployee(employee);
+    public ResponseEntity<Void> updateEmployee(String id, String firstName, String lastName, String email,
+            String phoneNumber,
+            LocalDate hireDate,
+            String department, String jobTitle,
+            BigDecimal salary) {
+        employeeService.updateEmployee(id, firstName, lastName, email, phoneNumber, hireDate, department, jobTitle,
+                salary);
         return ResponseEntity.ok().build();
     }
 
