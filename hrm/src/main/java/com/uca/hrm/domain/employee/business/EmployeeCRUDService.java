@@ -1,5 +1,5 @@
 
-package com.uca.hrm.domain.employee;
+package com.uca.hrm.domain.employee.business;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.hrm.comm.util.IdFactory;
+import com.uca.hrm.domain.employee.Employee;
 import com.uca.hrm.domain.employee.port.EmployeeRepository;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 @Transactional
-public class EmployeeService {
+public class EmployeeCRUDService {
 
     private final EmployeeRepository employeeRepository;
     private final IdFactory idFactory;

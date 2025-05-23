@@ -1,4 +1,4 @@
-package com.uca.hrm.domain.employee.domain;
+package com.uca.hrm.domain.employee;
 
 import com.uca.hrm.domain.employee.Employee;
 import org.junit.jupiter.api.Test;

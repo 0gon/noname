@@ -10,17 +10,17 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
-import com.uca.hrm.domain.employee.EmployeeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.uca.hrm.comm.util.FakeIdFactory;
 import com.uca.hrm.domain.employee.Employee;
+import com.uca.hrm.domain.employee.business.EmployeeCRUDService;
 import com.uca.hrm.domain.employee.repository.FakeEmployeeRepository;
 
 public class EmployeeServiceTest {
 
-    private EmployeeService employeeService;
+    private EmployeeCRUDService employeeService;
 
     @BeforeEach
     void setUp() {
@@ -28,7 +28,7 @@ public class EmployeeServiceTest {
                 ZoneId.systemDefault());
         FakeEmployeeRepository fakeEmployeeRepository = new FakeEmployeeRepository(clock);
         FakeIdFactory fakeIdFactory = new FakeIdFactory();
-        employeeService = new EmployeeService(fakeEmployeeRepository, fakeIdFactory);
+        employeeService = new EmployeeCRUDService(fakeEmployeeRepository, fakeIdFactory);
     }
 
     @Test

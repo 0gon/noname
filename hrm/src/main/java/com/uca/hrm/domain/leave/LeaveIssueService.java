@@ -40,7 +40,7 @@ public class LeaveIssueService {
             if(annualLeave <= 0) {
                 continue;
             }
-            LeaveIssue leaveIssue = LeaveIssue.create(idFactory, employee, "연차", annualLeave);
+            LeaveIssue leaveIssue = LeaveIssue.generate(idFactory, employee, "연차", annualLeave);
 
             // 4. 연차 부여 결과 저장
             leaveIssueRepository.save(leaveIssue);
@@ -116,5 +116,15 @@ public class LeaveIssueService {
                 return 30;
             }
         }
+    }
+
+    public LeaveIssue caclulateAndGenerate(Employee employee) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'caclulateAndGenerate'");
+    }
+
+    public List<LeaveIssue> findByPossibleLeave(Employee employee) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByPossibleLeave'");
     }
 }

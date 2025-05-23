@@ -6,5 +6,6 @@ public interface IdFactory {
     public String generateEmployeeId();
     public String generateLeaveIssueId();
     public String generateAttendanceLogId();
+    public String generateDocumentId();
 
 }

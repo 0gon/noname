@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.uca.hrm.domain.employee.Employee;
 
-public interface AttendanceLogRepositoryJpa extends JpaRepository<AttendanceLog, Long> {
+public interface AttendanceLogRepositoryJpa extends JpaRepository<AttendanceLog, String> {
 
     @Query("SELECT a FROM AttendanceLog a WHERE a.employee = :employee AND a.date >= :fromDate")
     List<AttendanceLog> getAbsentsByMonth(@Param("employee") Employee employee,

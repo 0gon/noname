@@ -13,10 +13,12 @@ import org.apache.commons.validator.routines.EmailValidator;
 import com.uca.hrm.comm.exception.InvalidException;
 import com.uca.hrm.comm.util.IdFactory;
 import com.uca.hrm.domain.attendanceLog.AttendanceLog;
+import com.uca.hrm.domain.document.model.Document;
+import com.uca.hrm.domain.document.model.LeaveRequest;
 import com.uca.hrm.domain.leave.model.LeaveIssue;
-import com.uca.hrm.domain.leave.model.LeaveRequest;
 import com.uca.hrm.domain.util.BaseField;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -41,12 +43,15 @@ public class Employee extends BaseField {
     private String jobTitle; // 직책
     private BigDecimal salary; // 연봉
 
-    @OneToMany(mappedBy = "employee")
-    private List<LeaveIssue> leaveIssues = new ArrayList<>();; // 연차 발급 내역
-    @OneToMany(mappedBy = "employee")
-    private List<LeaveRequest> leaveRequests = new ArrayList<>();; // 연차 신청 내역
+    @OneToMany(mappedBy = "author")
+    private List<Document> documents = new ArrayList<>();; // 문서 작성 내역
+
     @OneToMany(mappedBy = "employee")
     private List<AttendanceLog> attendanceLogs = new ArrayList<>(); // 출결 내역
+
+    @OneToMany(mappedBy = "employee", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    private List<LeaveIssue> leaveIssues = new ArrayList<>();; // 연차 발급 내역
+    
 
     // 신규 생성
     public static Employee create(IdFactory idFactory, String firstName, String lastName, String email,
@@ -150,6 +155,17 @@ public class Employee extends BaseField {
             this.salary = salary2;
         }
         validation();
+    }
+
+    public void acceptLeaveIssue(LeaveIssue leaveIssue) {
+        if (leaveIssue == null) {
+            throw new InvalidException("Leave issue is required");
+        }
+        leaveIssues.add(leaveIssue);
+    }
+
+    public void useLeave() {
+
     }
 
 }

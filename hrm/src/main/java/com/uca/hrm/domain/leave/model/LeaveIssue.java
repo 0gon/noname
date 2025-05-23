@@ -42,8 +42,9 @@ public class LeaveIssue extends BaseField {
         this.isExpired = isExpired;
     }
 
-    public static LeaveIssue create(IdFactory idFactory, Employee employee, String leaveType, int days) {
+    public static LeaveIssue generate(IdFactory idFactory, Employee employee, String leaveType, int days) {
         return new LeaveIssue(idFactory.generateLeaveIssueId(), employee, leaveType, days, false);
     }
+
 
 }
