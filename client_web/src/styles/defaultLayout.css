@@ -1,0 +1,37 @@
+html,
+body,
+#root,
+.App {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  height: 100%;
+  width: 100%;
+}
+
+
+#default_layout {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  & header {
+    width: 200px;
+    background-color: #b7b7b7;
+    font-weight: bold;
+
+    & .logo {
+        padding: 0 20px;
+    }
+  }
+
+
+  & main {
+    flex: 1;
+    padding: 0 20px;
+    background-color: #fff;
+    overflow-y: auto;
+
+  }
+}
